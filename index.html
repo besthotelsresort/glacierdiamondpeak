@@ -49,30 +49,36 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Inter', system-ui, sans-serif;background:#f4f1e8;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;color:#0a1128;position:relative;overflow:hidden}
-body::before{content:'';position:absolute;top:-150px;left:-150px;width:400px;height:400px;border-radius:50%;background:#d4af371a;filter:blur(60px)}
-body::after{content:'';position:absolute;bottom:-150px;right:-150px;width:400px;height:400px;border-radius:50%;background:#b8932c22;filter:blur(60px)}
-.container{max-width:460px;text-align:center;position:relative;z-index:1}
-.badge{display:inline-block;padding:8px 18px;background:#d4af371a;color:#d4af37;border-radius:30px;font-size:11px;letter-spacing:3px;margin-bottom:28px;font-weight:700}
-h1{font-family:'Playfair Display', Georgia, serif;font-size:38px;font-weight:500;margin-bottom:16px;letter-spacing:-1px}
-p.lead{color:#4a5677;font-size:16px;margin-bottom:36px}
-ul{list-style:none;margin-bottom:32px;text-align:left;background:#ffffff;border-radius:16px;padding:24px 28px;border:1px solid #4a56771a;box-shadow:0 20px 60px #0a11280d}
-li{padding:10px 0;color:#0a1128;font-size:14px;display:flex;align-items:flex-start;gap:12px}
-li::before{content:'✓';color:#d4af37;font-weight:bold;flex-shrink:0;background:#d4af371a;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:12px}
-.btn{display:block;width:100%;padding:18px;background:#d4af37;color:#fff;text-decoration:none;border-radius:4px;font-weight:600;transition:all .2s;letter-spacing:1px;box-shadow:0 12px 30px #d4af3755}
-.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px #d4af3777;background:#b8932c}
-.small{margin-top:18px;font-size:12px;color:#4a5677}
+body{font-family:'Inter', system-ui, sans-serif;min-height:100vh;background:#f4f1e8;color:#0a1128;padding:30px 6%;display:flex;flex-direction:column;position:relative;overflow:hidden}
+body::before{content:'';position:absolute;inset:0;z-index:0;background:radial-gradient(circle at 50% 42%, transparent 52%, #0a11281f 100%)}body::after{content:'';position:absolute;inset:0;z-index:0;opacity:.5;background:repeating-linear-gradient(135deg, #0a112805 0 2px, transparent 2px 7px)}
+.top-bar,.main,.bot{position:relative;z-index:2}
+.top-bar{display:flex;justify-content:space-between;border-bottom:1px solid #0a1128;padding-bottom:14px;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+.main{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;padding:40px 0}
+.brand{font-family:'Playfair Display', Georgia, serif;font-size:14px;letter-spacing:8px;color:#d4af37;margin-bottom:24px}
+h1{font-family:'Playfair Display', Georgia, serif;font-size:clamp(46px, 8.5vw, 132px);line-height:0.95;font-weight:400;letter-spacing:-3px;margin-bottom:22px}
+.sub{font-family:'Playfair Display', Georgia, serif;font-size:22px;font-style:italic;color:#4a5677;max-width:600px;margin:0 auto 36px}
+.rule{width:60px;height:1px;background:#d4af37;margin:30px auto}
+@keyframes ctaPulse{0%{transform:translateY(0);box-shadow:0 10px 26px #7ed95755,0 0 0 0 #7ed95788}55%{transform:translateY(-6px);box-shadow:0 28px 60px #7ed957cc,0 0 0 24px #7ed95700}100%{transform:translateY(0);box-shadow:0 10px 26px #7ed95755,0 0 0 0 #7ed95700}}
+@keyframes ctaShine{0%{left:-60%}45%{left:160%}100%{left:160%}}
+
+.btn{position:relative;overflow:hidden;display:inline-block;padding:clamp(24px,3.6vw,38px) clamp(58px,11vw,128px);background:#7ed957;color:#0a2410;text-decoration:none;border-radius:4px;font-weight:800;letter-spacing:3px;text-transform:uppercase;font-size:clamp(19px,2.8vw,28px);transition:transform .2s;animation:ctaPulse 1.9s ease-in-out infinite}
+.btn::before{content:'';position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:ctaShine 2.6s ease-in-out infinite}
+.btn:hover{animation-play-state:paused;transform:translateY(-3px)}
+.bot{display:flex;justify-content:space-between;border-top:1px solid #0a1128;padding-top:14px;font-size:11px;letter-spacing:3px;text-transform:uppercase}
+@media(max-width:600px){.top-bar,.bot{font-size:9px;letter-spacing:1px}.sub{font-size:17px}}
 </style></head><body>
-<div class="container">
-  <div class="badge">GLACIERDIAMONDPEAK</div>
-  <h1>One quick check</h1>
-  <p class="lead">Please confirm you meet our entry requirements before continuing.</p>
-  <ul>
-    <li>This page is intended for adult visitors only</li>
-    <li>You confirm you are 18 years of age or older</li>
-    <li>You accept access to content suitable for adults</li></ul>
-  <a href="main.html" class="btn">Yes, Continue</a>
-  <p class="small">By continuing you agree to our terms.</p>
+
+<div class="top-bar"><span>Issue No. 19</span><span>Glacier Diamond Peak</span><span>Est. 2000</span></div>
+<div class="main">
+  <div>
+    <div class="brand">GLACIER DIAMOND PEAK</div>
+    <h1>Access</h1>
+    <p class="sub">You must be 18 or older to enter this site.</p>
+    <div class="rule"></div>
+    <a href="main.html" class="btn">I am 18+ · Enter</a>
+  </div>
 </div>
+<div class="bot"><span>Age Confirmation</span><span>★★★★★</span><span>Forbes 5★</span></div>
+
 <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;max-width:520px;margin:0 auto;background:#0a1128;color:#fff;padding:22px 24px;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.4);z-index:9999;font-family:'Inter', system-ui, sans-serif;font-size:14px;line-height:1.55"><div style="font-family:'Playfair Display', Georgia, serif;font-size:18px;margin-bottom:8px;color:#d4af37">Your privacy</div><p style="margin-bottom:14px;color:#ddd">We use strictly necessary cookies to run this website. With your consent we also use analytics cookies to understand how visitors use the site. You can change your choice at any time. <a href="privacy.html" style="color:#d4af37">Learn more</a>.</p><div style="display:flex;gap:10px;flex-wrap:wrap"><button id="cookie-accept" style="flex:1;padding:11px 18px;background:#d4af37;color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-family:inherit;font-size:13px;letter-spacing:0.5px">Accept all</button><button id="cookie-essential" style="flex:1;padding:11px 18px;background:transparent;color:#fff;border:1px solid #ffffff44;border-radius:8px;font-weight:500;cursor:pointer;font-family:inherit;font-size:13px">Essential only</button></div></div><script>(function(){var k="cookie-consent-v1";if(localStorage.getItem(k))return;var b=document.getElementById("cookie-banner");if(!b)return;b.style.display="block";function s(v){localStorage.setItem(k,v);b.style.display="none"}document.getElementById("cookie-accept").onclick=function(){s("all")};document.getElementById("cookie-essential").onclick=function(){s("essential")}})();</script>
 </body></html>
